@@ -20,14 +20,15 @@ function App() {
   const [email, setEmail] = useState("");
   const [room, setRoom] = useState("");
 
+  // Add Student
   const addStudent = (e) => {
     e.preventDefault();
 
     const newStudent = {
       id: Date.now(),
-      name,
-      email,
-      room
+      name: name,
+      email: email,
+      room: room
     };
 
     setStudents([...students, newStudent]);
@@ -37,6 +38,7 @@ function App() {
     setRoom("");
   };
 
+  // Delete Student
   const deleteStudent = (id) => {
     setStudents(students.filter((student) => student.id !== id));
   };
@@ -45,7 +47,7 @@ function App() {
     <div>
       <h1>Hostel Management System</h1>
 
-      <h2>Student Registration</h2>
+      <h2>Add Student</h2>
 
       <form onSubmit={addStudent}>
         <input
@@ -72,11 +74,11 @@ function App() {
         <button type="submit">Add Student</button>
       </form>
 
-      <h2>Students</h2>
+      <h2>Student List</h2>
 
       {students.map((student) => (
         <div key={student.id}>
-          <p>Name: {student.name}</p>
+          <h3>{student.name}</h3>
           <p>Email: {student.email}</p>
           <p>Room: {student.room}</p>
 
